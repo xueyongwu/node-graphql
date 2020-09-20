@@ -99,7 +99,8 @@ module.exports = (req, res, gqlParams) => {
   }
 
   return {
-    exceptionLogData: async ({ params }) => {
+    // 参数1：字段传参；参数2：接口请求信息
+    exceptionLogData: async ({ params }, request) => {
       try {
         const { offset, limit, order, projectId } = params
         const { data: { data: { list: alertList, count } } } = await fetchAlertLogs(projectId, {
